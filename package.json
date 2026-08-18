@@ -1,0 +1,19 @@
+{
+  "name": "agent-sdk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch ./src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@openai/agents": "^0.16.1",
+    "dotenv": "^17.4.2",
+    "openai": "^7.5.0",
+    "zod": "^4.4.3"
+  }
+}
