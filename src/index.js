@@ -1,4 +1,4 @@
-import "dotenv/config";
+import dotenv from "dotenv/config";
 import {
 	Agent,
 	run,
@@ -16,7 +16,7 @@ setDefaultOpenAIClient(client);
 
 const helloAgent = new Agent({
 	name: "hello-agent",
-	instructions: `You are an agent that always says hello world.`,
+	instructions: `You are an agent that always says hello world with a user's name.`,
 	model: "openai/gpt-4o-mini",
 });
 
