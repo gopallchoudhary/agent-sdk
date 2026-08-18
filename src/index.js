@@ -1,23 +1,20 @@
-import dotenv from "dotenv/config";
-import {
-	Agent,
-	run,
-	setDefaultOpenAIClient,
-} from "@openai/agents";
-import { OpenAI } from "openai";
+import { Agent, run, setDefaultOpenAIClient } from "@openai/agents";
+import { openrouterClient } from "../client.js";
 
-const client = new OpenAI({
-	apiKey: process.env.OPENROUTER_API_KEY,
-	baseURL: process.env.OPENROUTER_BASE_URL,
-});
+setDefaultOpenAIClient(openrouterClient);
 
-setDefaultOpenAIClient(client);
-
+const location = "us";
 
 const helloAgent = new Agent({
 	name: "hello-agent",
-	instructions: `You are an agent that always says hello world with a user's name.`,
-	model: "openai/gpt-4o-mini",
+	instructions: function () {
+		if (location === "india") {
+			return `Always say namaste and then you are an agent that always say hello with user's name.`;
+		} else {
+			return `You are an agent that just talks to the user.`;
+		}
+	},
+	model: "deepseek/deepseek-v4-flash-0731",
 });
 
 run(helloAgent, "Hello there my name is John").then((result) => {
